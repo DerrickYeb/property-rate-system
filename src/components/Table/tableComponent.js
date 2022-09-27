@@ -3,9 +3,7 @@ import React, { useMemo } from 'react'
 import { MdCancel, MdCheckCircle, MdOutlineError } from 'react-icons/md';
 import { useGlobalFilter, usePagination, useSortBy, useTable } from 'react-table'
 import Card from '~components/Card/card';
-import PropTypes from 'prop-types'
 import Link from 'next/link';
-// import { Select } from '@chakra-react-select';
 
 const townsdata =[
     {
@@ -53,7 +51,6 @@ function TableComponent(props) {
 
     const textColor = useColorModeValue("secondaryGray.900", "white");
     const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
-    const buttonColor = useColorModeValue("brand.400", "white");
 
     return (
         <Card
@@ -72,10 +69,7 @@ function TableComponent(props) {
                 {/* <Menu /> */}
                 <Select
                 size={'lg'}
-                width="180px"
-                //  isMulti
-                //  name="colors"
-                //  options={data}
+                width="180px"    
                  placeholder="Select location"
                  >
                     {

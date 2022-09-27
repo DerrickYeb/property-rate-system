@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, CheckboxGroup, Container, Flex, FormControl, FormLabel, HStack, Input, SimpleGrid, Stack, VStack } from '@chakra-ui/react'
+import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Input, SimpleGrid, Stack } from '@chakra-ui/react'
 import { Select } from '@mantine/core'
 import React, { useState } from 'react'
 import Card from '~components/Card/card'

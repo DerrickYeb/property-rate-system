@@ -1,4 +1,4 @@
-import { Avatar, Button, Flex, Icon, Image, Menu, MenuButton, MenuItem, MenuList, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
+import { Avatar, Button, Flex, Icon, Menu, MenuButton, MenuItem, MenuList, Text, useColorMode, useColorModeValue } from '@chakra-ui/react';
 import React from 'react'
 import { SidebarResponsive } from '~components/Sidebar/Sidebar';
 import { MdNotificationsNone, MdInfoOutline } from "react-icons/md";
@@ -24,7 +24,7 @@ function NavbarHeaderLinks(props) {
     "14px 17px 40px 4px rgba(112, 144, 176, 0.18)",
     "14px 17px 40px 4px rgba(112, 144, 176, 0.06)"
   );
-  const borderButton = useColorModeValue("secondaryGray.500", "whiteAlpha.200");
+  
   return (
     <Flex
       w={{ sm: "100%", md: "auto" }}

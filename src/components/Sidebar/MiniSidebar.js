@@ -1,6 +1,5 @@
 import { Box, Stack, useColorModeValue } from '@chakra-ui/react'
 import React from 'react'
-import Card from '~components/Card/card'
 import SidebarLinks from './components/SidebarLinks';
 
 const MiniSidebar = (props) => {
@@ -12,7 +11,6 @@ const MiniSidebar = (props) => {
     );
     // Chakra Color Mode
     let sidebarBg = useColorModeValue("white", "navy.800");
-    let sidebarMargins = "0px";
     return (
         // <Card mt={40} px={4}>
             <Box

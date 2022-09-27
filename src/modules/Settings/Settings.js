@@ -1,5 +1,5 @@
 import { CheckIcon, CloseIcon, EditIcon } from '@chakra-ui/icons'
-import { Box, Button, ButtonGroup, Editable, EditableInput, EditablePreview, Flex, FormControl, FormLabel, HStack, IconButton, Input, SimpleGrid, Textarea, useEditableControls } from '@chakra-ui/react'
+import { Box, Button, ButtonGroup, Flex, FormControl, FormLabel, HStack, IconButton, Input, SimpleGrid, Textarea, useEditableControls } from '@chakra-ui/react'
 import React from 'react'
 import Card from '~components/Card/card'
 

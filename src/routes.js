@@ -2,8 +2,7 @@ import { SettingsIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react"
 import { IoPeople } from "react-icons/io5";
 import { MdFeedback, MdHome } from "react-icons/md";
-import AddUser from "~modules/Users/Add";
-import { ALL_FEEDBACK_URL, ALL_USERS, DASHBOARD_URL, NEW_USER_REGISTRATION_URL, SETTINGS_URL } from "./config/routes.config";
+import { ALL_FEEDBACK_URL, ALL_USERS, DASHBOARD_URL, SETTINGS_URL } from "./config/routes.config";
 
 const routes = [
     {

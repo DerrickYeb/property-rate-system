@@ -1,5 +1,4 @@
 import React from 'react'
-import BillRoutes from 'src/AppRoutes/PropertyRate/BillRoutes'
 import PageTitle from '~components/PageTitle'
 import PropertyAppLayout from '~layouts/PropertyAppLayout'
 import Bills from '~modules/Property/Bills'

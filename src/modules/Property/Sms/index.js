@@ -1,8 +1,8 @@
-import { Box, Center, Flex, Grid, GridItem, Text } from '@chakra-ui/react'
+import { Box, Center, Grid, GridItem } from '@chakra-ui/react'
 import { SegmentedControl } from '@mantine/core'
 import React, { useState } from 'react'
 import Card from '~components/Card/card'
-import { IconEye, IconCode, IconExternalLink } from '@tabler/icons';
+import { IconCode, IconExternalLink } from '@tabler/icons';
 import SingleSMS from './components/singleSms';
 import BulkSMS from './components/bulkSms';
 

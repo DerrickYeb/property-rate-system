@@ -1,5 +1,4 @@
 import { Box, Button, FormControl, FormLabel, Input, Select, SimpleGrid } from '@chakra-ui/react'
-import { DatePicker } from '@mantine/dates'
 import React from 'react'
 import Card from '~components/Card/card'
 

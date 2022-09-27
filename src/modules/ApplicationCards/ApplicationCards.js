@@ -1,13 +1,9 @@
-import { Box, Button, HStack, SimpleGrid, Stack, Text, theme, useStyleConfig, useStyles } from '@chakra-ui/react'
-import { Anchor } from '@mantine/core'
+import { Box, HStack, SimpleGrid, Text, theme } from '@chakra-ui/react'
 import Link from 'next/link'
 import React from 'react'
 import { FaBalanceScale, FaBuilding } from 'react-icons/fa'
-import { IoBuildOutline } from 'react-icons/io5'
-import { MdOutlineTaxiAlert } from 'react-icons/md'
 import { BOP_URL, PROPERTY_APP_URL } from 'src/config/routes.config'
 import Card from '~components/Card/card'
-import { CardComponent } from '~theme/additions/Card'
 
 const mockdata = [
     {

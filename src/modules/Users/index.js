@@ -1,7 +1,7 @@
 import React from 'react'
 import { NEW_USER_REGISTRATION_URL } from 'src/config/routes.config'
 import TableComponent from '~components/Table/tableComponent'
-import { columnsDataCheck, columnsDataComplex } from '~components/Table/variables/columnsData'
+import { columnsDataComplex } from '~components/Table/variables/columnsData'
 
 const data =
 [

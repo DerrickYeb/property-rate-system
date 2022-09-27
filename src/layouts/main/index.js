@@ -3,7 +3,6 @@ import React, { useState } from 'react'
 import Sidebar from '~components/Sidebar/Sidebar'
 import { SidebarContext } from '~contexts/SidebarContext'
 import routes from 'src/routes'
-import NavbarHeaderLinks from '~components/navbar/NavbarLinks'
 import MainDashboardNavbar from '~components/navbar/MainDashboardNavbar'
 
 const DashboardLayout = (props) => {

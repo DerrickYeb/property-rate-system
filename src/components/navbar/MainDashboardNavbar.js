@@ -1,4 +1,4 @@
-import { Box, Breadcrumb, BreadcrumbItem, BreadcrumbLink, Flex, Heading, Link, Text, useColorModeValue } from '@chakra-ui/react';
+import { Box, Flex, Heading, Link, Text, useColorModeValue } from '@chakra-ui/react';
 import React, { useEffect, useState } from 'react'
 import NavbarHeaderLinks from './NavbarLinks';
 import PropTypes from 'prop-types'
@@ -17,7 +17,6 @@ function MainDashboardNavbar(props){
     const { secondary, message, brandText,appName } = props;
 
     let mainText = useColorModeValue("navy.700", "white");
-  let secondaryText = useColorModeValue("gray.700", "white");
   let navbarPosition = "fixed";
   let navbarFilter = "none";
   let navbarBackdrop = "blur(20px)";

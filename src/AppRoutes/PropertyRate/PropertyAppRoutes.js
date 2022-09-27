@@ -1,8 +1,7 @@
-import { SettingsIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
-import { IoOptions, IoPeople } from "react-icons/io5";
-import { MdFeedback, MdHome, MdMoney, MdPayments, MdReport } from "react-icons/md";
-import { ALL_FEEDBACK_URL, ALL_USERS, DASHBOARD_URL, PROPERTY_RATE_BILLS_URL, PROPERTY_RATE_MORE, PROPERTY_RATE_PAYMENT_URL, SETTINGS_URL } from "src/config/routes.config";
+import { IoOptions } from "react-icons/io5";
+import { MdHome, MdMoney, MdPayments, MdReport } from "react-icons/md";
+import { DASHBOARD_URL, PROPERTY_RATE_BILLS_URL, PROPERTY_RATE_MORE, PROPERTY_RATE_PAYMENT_URL, SETTINGS_URL } from "src/config/routes.config";
 
 const PropertyAppRoutes = [
     {
