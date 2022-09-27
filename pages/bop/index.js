@@ -1,9 +1,9 @@
 import React from 'react'
 
-const BOP = () => {
+const bop = () => {
   return (
     <div>BOP</div>
   )
 }
 
-export default BOP
+export default bop
