@@ -1,17 +1,17 @@
 import React from 'react'
 import PageTitle from '~components/PageTitle'
 import BopAppLayout from '~layouts/BopAppLayout'
-import BOPIndex from '~modules/BOP'
+import Bills from '~modules/BOP/Bills'
 
-const bop = () => {
+const BillsIndex = () => {
   return (
     <>
-    <PageTitle title="BOP" />
+    <PageTitle title="BOP App - Bills"/>
     <BopAppLayout>
-      <BOPIndex/>
+      <Bills/>
     </BopAppLayout>
     </>
   )
 }
 
-export default bop
+export default BillsIndex

@@ -21,6 +21,9 @@ export const inputStyles = {
             p: "20px",
             _placeholder: { color: "secondaryGray.400" },
           },
+          _focus: {
+            borderColor:"brand.500"
+          },
         }),
         auth: (props) => ({
           field: {

@@ -1,4 +1,4 @@
-import { Menu, Text } from "@chakra-ui/react";
+import { Button, Menu, Text } from "@chakra-ui/react";
 
 export const columnsDataDevelopment = [
   {
@@ -38,45 +38,78 @@ export const columnsDataCheck = [
   },
 ];
 
-export const columnsDataColumns = [
+export const propertyColumns = [
   {
-    Header: "NAME",
-    accessor: "name",
+    name: "Onwer Name",
+    selector: "attributes.owner_name",
+    sortable: true
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    name: "House Number",
+    selector: "attributes.house_number",
+    sortable: true
   },
   {
-    Header: "QUANTITY",
-    accessor: "quantity",
+    name: "Town",
+    selector: "attributes.town",
+    sortable: true,
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    name: "Street Name",
+    selector: "attributes.street_name",
+    sortable: true
+  },
+  {
+    name: "Amount",
+    selector: "attributes.amount",
+    sortable: true,
+  },
+  {
+    name: "ARREARS",
+    selector: "attributes.arrears",
+  },
+  {
+    name: "PHONE",
+    selector: "attributes.phone_number",
+  },
+  {
+				
+    cell: () => <Button bg={'brand.500'} borderRadius={0} _hover={{backgroundColor:"none"}} fontSize={12} color="#fff" height={5} w={200}>View</Button>,
+    ignoreRowClick: true,
+    allowOverflow: true,
+    button: true,
   },
 ];
 
 export const columnsDataComplex = [
   {
-    Header: "NAME",
-    accessor: "name",
+    name: "FIRST NAME",
+    selector: "first_name",
   },
   {
-    Header: "STATUS",
-    accessor: "status",
+    name: "LAST NAME",
+    selector: "last_name",
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    name: "USERNAME",
+    selector: "username",
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    name: "Email",
+    selector: "email",
   },
   {
-    Header:"Action",
-    accessor: "action",
+    name: "APP ACCESS",
+    selector: "application_access",
+  },
+  {
+    name: "DATE",
+    selector: "createdAt",
+  },
+  
+  {
+    name:"Action",
+    selector: "action",
     render:(cell)=>{
      return <Text color={'#fff'}>Hello</Text>
     }

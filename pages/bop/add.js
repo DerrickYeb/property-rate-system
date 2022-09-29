@@ -1,17 +1,17 @@
 import React from 'react'
 import PageTitle from '~components/PageTitle'
 import BopAppLayout from '~layouts/BopAppLayout'
-import BOPIndex from '~modules/BOP'
+import NewBop from '~modules/BOP/NewBop'
 
-const bop = () => {
+const add = () => {
   return (
     <>
-    <PageTitle title="BOP" />
+    <PageTitle title="BOP | New"/>
     <BopAppLayout>
-      <BOPIndex/>
+        <NewBop/>
     </BopAppLayout>
     </>
   )
 }
 
-export default bop
+export default add

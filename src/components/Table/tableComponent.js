@@ -28,7 +28,7 @@ function TableComponent(props) {
     const { columnsData, tableData,eventUrl,tableName,buttonName } = props
     const columns = useMemo(() => columnsData, [columnsData]);
     const data = useMemo(() => tableData, [tableData]);
-
+    console.log(tableData);
     const tableInstance = useTable(
         {
           columns,
@@ -67,7 +67,7 @@ function TableComponent(props) {
                     {tableName}
                 </Text>
                 {/* <Menu /> */}
-                <Select
+                {/* <Select
                 size={'lg'}
                 width="180px"    
                  placeholder="Select location"
@@ -77,7 +77,7 @@ function TableComponent(props) {
                             <option value={iten.value} key={iten.value}>{iten.name}</option>
                         )):null
                     }
-                    </Select>
+                    </Select> */}
 
                 {
                     eventUrl ? (<Link href={eventUrl} passHref>
@@ -86,7 +86,7 @@ function TableComponent(props) {
                         ):null
                 }
             </Flex>
-            <Table {...getTableProps()} variant='simple' color='gray.500' mb='24px'>
+            <Table {...getTableProps()}  variant='striped' color='gray.500' mb='24px'>
                 <Thead>
                     {headerGroups.map((headerGroup, index) => (
                         <Tr {...headerGroup.getHeaderGroupProps()} key={index}>
@@ -114,12 +114,12 @@ function TableComponent(props) {
                         return (
                             <Tr {...row.getRowProps()} key={index}>
                                 {row.cells.map((cell, index) => {
-                                    let data = "";
-                                    if (cell.column.Header === "NAME") {
+                                    let data = ''
+                                    if (cell.column.Header === "OWNER NAME" || cell.column.Header === "NAME") {
                                         data = (
                                             <Flex align='center'>
                                                 <Checkbox
-                                                    defaultChecked={cell.value[1]}
+                                                    defaultChecked={cell.value}
                                                     colorScheme='brandScheme'
                                                     me='10px'
                                                 />
@@ -136,18 +136,18 @@ function TableComponent(props) {
                                                     h='24px'
                                                     me='5px'
                                                     color={
-                                                        cell.value === "Approved"
+                                                        cell.value === "true"
                                                             ? "green.500"
-                                                            : cell.value === "Disable"
+                                                            : cell.value === "false"
                                                                 ? "red.500"
                                                                 : cell.value === "Error"
                                                                     ? "orange.500"
                                                                     : null
                                                     }
                                                     as={
-                                                        cell.value === "Approved"
+                                                        cell.value === "true"
                                                             ? MdCheckCircle
-                                                            : cell.value === "Disable"
+                                                            : cell.value === "false"
                                                                 ? MdCancel
                                                                 : cell.value === "Error"
                                                                     ? MdOutlineError
@@ -165,17 +165,11 @@ function TableComponent(props) {
                                                 {cell.value}
                                             </Text>
                                         );
-                                    } else if (cell.column.Header === "PROGRESS") {
+                                    } else if (cell.column.Header === "USERNAME") {
                                         data = (
-                                            <Flex align='center'>
-                                                <Progress
-                                                    variant='table'
-                                                    colorScheme='brandScheme'
-                                                    h='8px'
-                                                    w='108px'
-                                                    value={cell.value}
-                                                />
-                                            </Flex>
+                                            <Text color={textColor} colorScheme='brandSchme' fontSize='sm' fontWeight='700'>
+                                            {cell.value}
+                                        </Text>
                                         );
                                     }
                                     return (
