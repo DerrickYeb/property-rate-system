@@ -1,12 +1,14 @@
 import { Card } from '@mantine/core'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useMemo, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { toast } from 'react-hot-toast'
 import { PROPERTY_RATE_ADD_NEW } from 'src/config/routes.config'
 import { getAxios } from 'src/services/services.auth'
 import TableComponent from '~components/Table/tableComponent'
 import { columnsDataCheck, propertyColumns } from '~components/Table/variables/columnsData'
-
+import DataTableExtensions from "react-data-table-component-extensions";
+import "react-data-table-component-extensions/dist/index.css";
+import FilterComponent from '~components/FilterComponent'
 
 const BOPIndex = () => {
     const [data, setData] = useState([])
@@ -25,6 +27,36 @@ const BOPIndex = () => {
         toast('Selected property selected',toast.success)
         console.log('Selected property selected',selectedProperty);
     }
+    const [filterText, setFilterText] = React.useState("");
+    const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
+      false
+    );
+    // const filteredItems = data.filter(
+    //   item => item.name && item.name.includes(filterText)
+    // );
+    const filteredItems = data.filter(
+      item =>
+        JSON.stringify(item)
+          .toLowerCase()
+          .indexOf(filterText.toLowerCase()) !== -1
+    );
+  
+    const subHeaderComponent = useMemo(() => {
+      const handleClear = () => {
+        if (filterText) {
+          setResetPaginationToggle(!resetPaginationToggle);
+          setFilterText("");
+        }
+      };
+  
+      return (
+        <FilterComponent
+          onFilter={e => setFilterText(e.target.value)}
+          onClear={handleClear}
+          filterText={filterText}
+        />
+      );
+    }, [filterText, resetPaginationToggle]);
 
     useEffect(() => {
         fetchData();
@@ -37,9 +69,10 @@ const BOPIndex = () => {
         // eventUrl={PROPERTY_RATE_ADD_NEW}
         //  columnsData={propertyColumns} tableData={data} />
         <Card>
+            {/* <DataTableExtensions {...tableData}> */}
             <DataTable
                 columns={propertyColumns}
-                data={data}
+                data={filteredItems}
                 title="BOP"
                 fixedHeader
                 fixedHeaderScrollHeight='300px'
@@ -53,6 +86,8 @@ const BOPIndex = () => {
                 // selectableRowSelected={handleSelectedProperty}
                 onRowClicked={handleSelectedProperty}
             />
+            {/* </DataTableExtensions> */}
+            
         </Card>
     )
 }

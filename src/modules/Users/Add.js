@@ -1,7 +1,7 @@
 import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Select, SimpleGrid, Stack } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
+import { toast, useToaster } from 'react-hot-toast'
 import { NEW_USER_REGISTRATION_URL } from 'src/config/api.routes.config'
 import { postAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
@@ -25,6 +25,8 @@ const checkboxData = [
 ]
 
 const AddUser = () => {
+
+  const {toasts} = useToaster();
   const { register, handleSubmit } = useForm({ shouldUseNativeValidation: true })
   const [checkedItems, setCheckedItems] = useState([false, false])
   const [departmentSelected,setDepartmentSelected] = useState()
@@ -44,7 +46,7 @@ const AddUser = () => {
       application_access:"all"
     }
     await postAxios(NEW_USER_REGISTRATION_URL, userData).then(response => {
-        toast("Added Successfully")
+        toasts("Added Successfully")
     }).catch(error => {
       toast(error?.message)
     })
@@ -93,7 +95,7 @@ const AddUser = () => {
               <FormLabel>Last Name</FormLabel>
               <Input {...register("last_name")} variant={'main'} borderColor={'brand.500'} />
             </FormControl>
-            <FormControl py={8}>
+            <FormControl>
           <FormLabel>Gender</FormLabel>
           <Select size='md' variant={'main'} onChange={(e)=> setGenderSelected(e.target.value)}>
             <option value='male'>Male</option>
