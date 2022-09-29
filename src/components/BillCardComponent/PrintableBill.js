@@ -17,7 +17,7 @@ const PrintableBill = ({ customerDetails,appName }) => {
                 }}
             >
                 <Flex px={4} py={2}>
-                    <Image src='' height={70} sizes={20} alt='' />
+                    <Image src='/images/ked.jpeg' height={70} sizes={20} alt='' />
                 </Flex>
                 <Flex dir='row' py={2}>
                     <VStack>

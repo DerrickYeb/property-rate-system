@@ -49,7 +49,7 @@ const Users = () => {
 
   useEffect(() => {
     dataFetch()
-  }, [fetchData])
+  }, [])
 
   return (
     // <TableComponent
