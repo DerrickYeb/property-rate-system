@@ -4,7 +4,6 @@ import React from 'react'
 import DataTable from 'react-data-table-component'
 import { PROPERTY_APP_PAYMENT_NEW_PAYMENT_URL } from 'src/config/routes.config'
 import Card from '~components/Card/card'
-import DataTableExtensions from "react-data-table-component-extensions";
 
 const paymentColumn = [
   {
@@ -33,12 +32,10 @@ const Payment = () => {
         <Button variant={'brand'} width={'200px'} fontSize={12}>New Payment</Button>
           </Flex>
       </Link>
-      <DataTableExtensions>
       <DataTable
     data={[]}
     columns={paymentColumn}
     title='Payments'/>
-      </DataTableExtensions>
     </Card>
   )
 }

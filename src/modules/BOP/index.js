@@ -4,7 +4,6 @@ import DataTable from 'react-data-table-component'
 import { toast } from 'react-hot-toast'
 import { getAxios } from 'src/services/services.auth'
 import { propertyColumns } from '~components/Table/variables/columnsData'
-import "react-data-table-component-extensions/dist/index.css";
 import FilterComponent from '~components/FilterComponent'
 
 const BOPIndex = () => {
