@@ -1,5 +1,5 @@
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
-import { Input, Select } from '@mantine/core'
+import { Select } from '@mantine/core'
 import React from 'react'
 import Card from '~components/Card/card'
 

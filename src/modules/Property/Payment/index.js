@@ -4,8 +4,6 @@ import React from 'react'
 import DataTable from 'react-data-table-component'
 import { PROPERTY_APP_PAYMENT_NEW_PAYMENT_URL } from 'src/config/routes.config'
 import Card from '~components/Card/card'
-import TableComponent from '~components/Table/tableComponent'
-import { columnsDataCheck, columnsDataColumns } from '~components/Table/variables/columnsData'
 import DataTableExtensions from "react-data-table-component-extensions";
 
 const paymentColumn = [

@@ -2,18 +2,13 @@ import { Card } from '@mantine/core'
 import React, { useEffect, useMemo, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { toast } from 'react-hot-toast'
-import { PROPERTY_RATE_ADD_NEW } from 'src/config/routes.config'
 import { getAxios } from 'src/services/services.auth'
-import TableComponent from '~components/Table/tableComponent'
-import { columnsDataCheck, propertyColumns } from '~components/Table/variables/columnsData'
-import DataTableExtensions from "react-data-table-component-extensions";
+import { propertyColumns } from '~components/Table/variables/columnsData'
 import FilterComponent from '~components/FilterComponent'
-// import "react-data-table-component-extensions/dist/index.css";
 
 const PropertyIndex = () => {
     const [data, setData] = useState([])
     const [selectedProperty,setSelectedProperty] = useState()
-    const [isSelected,selected] = useState(false)
 
     const fetchData = async () => {
         await getAxios('properties').then((response) => {
@@ -24,9 +19,7 @@ const PropertyIndex = () => {
   const [resetPaginationToggle, setResetPaginationToggle] = React.useState(
     false
   );
-  // const filteredItems = data.filter(
-  //   item => item.name && item.name.includes(filterText)
-  // );
+
   const filteredItems = data.filter(
     item =>
       JSON.stringify(item)

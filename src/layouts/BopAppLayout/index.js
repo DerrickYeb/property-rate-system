@@ -1,7 +1,6 @@
 import { Box, Portal, SimpleGrid, useDisclosure } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import BopAppRoutes from 'src/AppRoutes/BOPRoutes/BopAppRoutes'
-import PropertyAppRoutes from 'src/AppRoutes/PropertyRate/PropertyAppRoutes'
 import MainDashboardNavbar from '~components/navbar/MainDashboardNavbar'
 import MiniSidebar from '~components/Sidebar/MiniSidebar'
 import Sidebar from '~components/Sidebar/Sidebar'

@@ -1,6 +1,5 @@
-import { Box, Divider, Flex, Heading, Icon, IconButton, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
+import { Box, Flex, Icon, Image, SimpleGrid, Text, VStack } from '@chakra-ui/react'
 import React from 'react'
-import Signature from 'public/images/signature.png'
 import { MdPrint } from 'react-icons/md'
 
 const PrintableBill = ({ customerDetails,appName }) => {

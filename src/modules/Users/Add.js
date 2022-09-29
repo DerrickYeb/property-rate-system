@@ -1,8 +1,7 @@
-import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Radio, RadioGroup, Select, SimpleGrid, Stack, useToast } from '@chakra-ui/react'
+import { Box, Button, Flex, FormControl, FormLabel, Heading, Input, Radio, RadioGroup, Select, SimpleGrid, Stack, useToast } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useState } from 'react'
-import { FormProvider, useForm } from 'react-hook-form'
-import { toast, useToaster } from 'react-hot-toast'
+import { useForm } from 'react-hook-form'
 import { NEW_USER_REGISTRATION_URL } from 'src/config/api.routes.config'
 import { ALL_USERS } from 'src/config/routes.config'
 import { postAxios } from 'src/services/services.auth'
@@ -30,9 +29,7 @@ const AddUser = () => {
 
   const toast = useToast();
   const { register, handleSubmit } = useForm({ shouldUseNativeValidation: true })
-  const [checkedItems, setCheckedItems] = useState([false, false])
   const [departmentSelected,setDepartmentSelected] = useState()
-  const [genderSelected,setGenderSelected] = useState()
 
 
   const submitData = async (data) => {
@@ -71,12 +68,6 @@ const AddUser = () => {
     console.log(data)
   }
 
-  const allChecked = checkedItems.every(Boolean)
-  const isIndeterminate = checkedItems.some(Boolean) && !allChecked
-  const [data, setData] = useState([
-    { value: 'react', label: 'React' },
-    { value: 'ng', label: 'Angular' },
-  ]);
 
 
   return (

@@ -1,7 +1,7 @@
 import { AddIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react";
 import { FaGgCircle } from "react-icons/fa";
-import { BOP_PAYMENT_GCR_ANALYSIS_URL, BOP_PAYMENT_GCR_REGISTRATION_URL, BOP_PAYMENT_PERIODIC_ANALYSIS_URL, PROPERTY_APP_PAYMENT_GCR_ANALYSIS_URL, PROPERTY_APP_PAYMENT_GCR_REGISTRATION_URL, PROPERTY_APP_PAYMENT_PERIODIC_ANALYSIS_URL } from "src/config/routes.config";
+import { BOP_PAYMENT_GCR_ANALYSIS_URL, BOP_PAYMENT_GCR_REGISTRATION_URL, BOP_PAYMENT_PERIODIC_ANALYSIS_URL } from "src/config/routes.config";
 
 const PaymentRoutes = [
     // {

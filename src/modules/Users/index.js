@@ -5,7 +5,6 @@ import DataTable from 'react-data-table-component'
 import { NEW_USER_REGISTRATION_URL } from 'src/config/routes.config'
 import { getAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
-import TableComponent from '~components/Table/tableComponent'
 import { columnsDataComplex } from '~components/Table/variables/columnsData'
 
 const data =
