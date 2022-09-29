@@ -59,7 +59,7 @@ const Users = () => {
     //  columnsData={columnsDataComplex} tableData={fetchData} />
     <Card>
       <Link href={NEW_USER_REGISTRATION_URL} passHref>
-        <Flex justifyContent={'flex-end'}>
+        <Flex justifyContent={'flex-end'} py={4}>
         <Button variant={'brand'} width={'200px'} fontSize={12}>New User</Button>
           </Flex>
       </Link>

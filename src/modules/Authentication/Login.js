@@ -1,4 +1,4 @@
-import { Box, Button, ChakraProvider, FormControl, FormErrorMessage, FormLabel, Image, Input, LinkBox, Text } from '@chakra-ui/react'
+import { Box, Button, ChakraProvider, FormControl, FormErrorMessage, FormLabel, Image, Input, LinkBox, Text, useToast } from '@chakra-ui/react'
 // import { Input, PasswordInput, TextInput } from '@mantine/core'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
@@ -20,19 +20,31 @@ const Login = () => {
     const formOptions = { resolver: yupResolver(validationSchema) };
 
     const { register, handleSubmit, setError,formState } = useForm({ formOptions })
-
+    const toast = useToast();
     const { errors } = formState;
 
     const Login = async ({ identifier, password }) => {
         return LoginApi(identifier, password).then((response) => {
             localStorage.setItem('token', response.jwt)
             // const returnurl = router.query.returnUrl || DASHBOARD_URL;
-            toast("Login success")
+            toast({
+                title:'Login success',
+                description:'Login successfully',
+                position: 'top',
+                duration: 3000,
+                status: 'success',
+            })
             router.push(DASHBOARD_URL);
-            console.log(response.data);
         }).catch((err) => {
-            setError('apiError',{message:err.message})
-            console.log(err.message);
+            toast({
+                title:'Login Error',
+                description:'Username or password is incorrect',
+                position: 'top',
+                duration: 3000,
+                status: 'error',
+            })
+            console.log(err.response)
+            setError('apiError',{message:err.response.data.error.message})
         });
 
     }
@@ -77,7 +89,6 @@ const Login = () => {
                         </Box>
                         {/* <PasswordInput size='20' label="Password"/> */}
                         <Box py={4} px={4} display={'flex'} justifyContent={'center'}>
-                            {/* <Link href={DASHBOARD_URL}> */}
                             <Button size={'lg'} disabled={formState.isSubmitting} isLoading={formState.isSubmitting} type="onSubmit" width='100%' _hover={{
                                 backgroundColor: 'none'
                             }} variant={'solid'} bg="#5162C3" color={'white'}>Sign In</Button>
