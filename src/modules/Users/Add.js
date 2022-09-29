@@ -1,8 +1,10 @@
-import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Select, SimpleGrid, Stack } from '@chakra-ui/react'
+import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Select, SimpleGrid, Stack, useToast } from '@chakra-ui/react'
+import Link from 'next/link'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
 import { toast, useToaster } from 'react-hot-toast'
 import { NEW_USER_REGISTRATION_URL } from 'src/config/api.routes.config'
+import { ALL_USERS } from 'src/config/routes.config'
 import { postAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
 
@@ -26,7 +28,7 @@ const checkboxData = [
 
 const AddUser = () => {
 
-  const {toasts} = useToaster();
+  const toast = useToast();
   const { register, handleSubmit } = useForm({ shouldUseNativeValidation: true })
   const [checkedItems, setCheckedItems] = useState([false, false])
   const [departmentSelected,setDepartmentSelected] = useState()
@@ -41,14 +43,29 @@ const AddUser = () => {
       username :data.username,
       email:data.email,
       phone:data.phone,
+      gender:data.gender,
       password:data.password,
       department:departmentSelected,
-      application_access:"all"
+      application_access:JSON.stringify(data.role)
     }
     await postAxios(NEW_USER_REGISTRATION_URL, userData).then(response => {
-        toasts("Added Successfully")
+      toast({
+        title: 'Account created.',
+        description: "We've created your account for you.",
+        status: 'success',
+        duration: 9000,
+        isClosable: true,
+        position: 'top',
+      })
     }).catch(error => {
-      toast(error?.message)
+      toast({
+        title:"Error while creating account",
+        description:error.message,
+        status: 'error',
+        duration: 5000,
+        isClosable: true,
+        position: 'top',
+      })
     })
     console.log(data)
   }
@@ -76,9 +93,11 @@ const AddUser = () => {
         <Card px={10}
           w='100%'
         >
+          <Link href={ALL_USERS}>
           <Flex flexDir={'column'} pb={10} justifyContent='flex-start'>
             <Button variant={'brand'} width='100px'>Back</Button>
           </Flex>
+          </Link>
           <SimpleGrid templateColumns={{
             base: "1fr",
             lg: "1.34fr 1.34fr",
@@ -98,8 +117,8 @@ const AddUser = () => {
             <FormControl>
           <FormLabel>Gender</FormLabel>
           <Select size='md' variant={'main'} onChange={(e)=> setGenderSelected(e.target.value)}>
-            <option value='male'>Male</option>
-            <option value='female'>Female</option>
+            <option value='1'>Male</option>
+            <option value='2'>Female</option>
           </Select>
         </FormControl>
             <FormControl>
@@ -135,10 +154,21 @@ const AddUser = () => {
         <FormControl py={8}>
           <FormLabel>Department</FormLabel>
           <Select size='md' variant={'main'} onChange={(e)=> setDepartmentSelected(e.target.value)}>
-            <option value='DCE'>DCE</option>
-            <option value='DCE'>DCE</option>
-            <option value='DCE'>DCE</option>
-            <option value='DCE'>DCE</option>
+          <option value="1">DCE </option>
+          <option value="2">DCD </option>
+          <option value="3">PM </option>
+          <option value="4">Finance - DFO </option>
+          <option value="5">Budget </option>
+          <option value="6">Planning </option>
+          <option value="7">Procurement </option>
+          <option value="8">Internal Audit </option>
+          <option value="9">Finance - Collector </option>
+          <option value="10">Finance - NABCO/NSS </option>
+          <option value="11">Finance - Office </option>
+          <option value="12">MIS - NABCO/NSS </option>
+          <option value="15">Physical Planning </option>
+          <option value="16"> F &amp; A Committee </option>
+          <option value="17">Administration </option> 
           </Select>
         </FormControl>
         <FormControl>
@@ -150,9 +180,9 @@ const AddUser = () => {
               me='16px' defaultChecked colorScheme='brandScheme'
               isChecked={allChecked}
               isIndeterminate={isIndeterminate}
-              {...register("role")}
+              // {...register("role",{onChange:(e)=>{setCheckedItems([e.target.checked, e.target.checked])}})}
               value="all"
-              onChange={(e) => setCheckedItems([e.target.checked, e.target.checked])}
+               onChange={(e) => setCheckedItems([e.target.checked, e.target.checked])}
             >
               All
             </Checkbox>
@@ -161,7 +191,8 @@ const AddUser = () => {
                 me='16px' defaultChecked colorScheme='brandScheme'
                 isChecked={checkedItems[0]}
                 value="propertyRate"
-                onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
+                {...register("role",{onChange:(e)=>{setCheckedItems([e.target.checked, checkedItems[1]])}})}
+                // onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
               >
                 Property Rate
               </Checkbox>
@@ -169,7 +200,8 @@ const AddUser = () => {
                 me='16px' defaultChecked colorScheme='brandScheme'
                 isChecked={checkedItems[1]}
                 value="bop"
-                onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
+                {...register("role",{onChange:(e)=>{setCheckedItems([checkedItems[0], e.target.checked])}})}
+                // onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
               >
                 Building Permit Payment
               </Checkbox>
