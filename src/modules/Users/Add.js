@@ -1,4 +1,4 @@
-import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Select, SimpleGrid, Stack, useToast } from '@chakra-ui/react'
+import { Box, Button, Checkbox, Flex, FormControl, FormLabel, Heading, Input, Radio, RadioGroup, Select, SimpleGrid, Stack, useToast } from '@chakra-ui/react'
 import Link from 'next/link'
 import React, { useState } from 'react'
 import { FormProvider, useForm } from 'react-hook-form'
@@ -46,7 +46,7 @@ const AddUser = () => {
       gender:data.gender,
       password:data.password,
       department:departmentSelected,
-      application_access:JSON.stringify(data.role)
+      application_access:data.role
     }
     await postAxios(NEW_USER_REGISTRATION_URL, userData).then(response => {
       toast({
@@ -60,12 +60,13 @@ const AddUser = () => {
     }).catch(error => {
       toast({
         title:"Error while creating account",
-        description:error.message,
+        description:error.response.data.error.message,
         status: 'error',
         duration: 5000,
         isClosable: true,
         position: 'top',
       })
+      console.error(error.response.data.error.message)
     })
     console.log(data)
   }
@@ -116,9 +117,9 @@ const AddUser = () => {
             </FormControl>
             <FormControl>
           <FormLabel>Gender</FormLabel>
-          <Select size='md' variant={'main'} onChange={(e)=> setGenderSelected(e.target.value)}>
-            <option value='1'>Male</option>
-            <option value='2'>Female</option>
+          <Select size='md' variant={'main'} {...register("gender")}>
+            <option value='male'>Male</option>
+            <option value='female'>Female</option>
           </Select>
         </FormControl>
             <FormControl>
@@ -176,7 +177,7 @@ const AddUser = () => {
           {/* {
             checkboxData.map((role) => ( */}
           <>
-            <Checkbox
+            {/* <Checkbox
               me='16px' defaultChecked colorScheme='brandScheme'
               isChecked={allChecked}
               isIndeterminate={isIndeterminate}
@@ -191,7 +192,7 @@ const AddUser = () => {
                 me='16px' defaultChecked colorScheme='brandScheme'
                 isChecked={checkedItems[0]}
                 value="propertyRate"
-                {...register("role",{onChange:(e)=>{setCheckedItems([e.target.checked, checkedItems[1]])}})}
+                {...register("role")}
                 // onChange={(e) => setCheckedItems([e.target.checked, checkedItems[1]])}
               >
                 Property Rate
@@ -200,12 +201,19 @@ const AddUser = () => {
                 me='16px' defaultChecked colorScheme='brandScheme'
                 isChecked={checkedItems[1]}
                 value="bop"
-                {...register("role",{onChange:(e)=>{setCheckedItems([checkedItems[0], e.target.checked])}})}
+                {...register("role")}
                 // onChange={(e) => setCheckedItems([checkedItems[0], e.target.checked])}
               >
                 Building Permit Payment
               </Checkbox>
-            </Stack>
+            </Stack> */}
+            <RadioGroup {...register("role")}>
+              <Stack>
+                <Radio value='all' >All Apps</Radio>
+                <Radio value='property' >Property Rate App</Radio>
+                <Radio value='bop'>Business Permit App</Radio>
+              </Stack>
+            </RadioGroup>
           </>
           {/* ))
           } */}
