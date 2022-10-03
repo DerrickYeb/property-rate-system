@@ -36,13 +36,13 @@ const PrintableBill = ({ customerDetails,appName }) => {
                 {/* </VStack> */}
             </SimpleGrid>
             <Flex border={'1px dashed'}>
-                <Text px={2} fontWeight={'bold'} fontSize={13}>{`${customerDetails.attributes.owner_name} || ID: ${customerDetails.attributes.property_id}`}</Text>
+                <Text px={2} fontWeight={'bold'} fontSize={13}>{`${customerDetails?.attributes?.owner_name} || ID: ${customerDetails.attributes.property_id}`}</Text>
             </Flex>
             <Flex dir='row' borderBottom={'1px solid'}>
                 <Text fontWeight={'bold'} fontSize={13} px={2}>TOWN</Text>
             </Flex>
             <Flex px={2}>
-                <Text py={2} fontSize={13}>{customerDetails.attributes.town}</Text>
+                <Text py={2} fontSize={13}>{customerDetails?.attributes?.town}</Text>
             </Flex>
             <Flex py={6}>
                 <SimpleGrid columns={6}>
@@ -54,7 +54,7 @@ const PrintableBill = ({ customerDetails,appName }) => {
                     <Text fontWeight={'bold'} pl={{base:1,lg:4}} borderBottom={'1px solid'} fontSize={13}>AMOUNT DUE</Text>
 
                     {/* Data */}
-                    <Text fontWeight={'bold'} px={4} display='flex' justifyContent={'center'} fontSize={14}>{customerDetails.attributes.phone_number}</Text>
+                    <Text fontWeight={'bold'} px={4} display='flex' justifyContent={'center'} fontSize={14}>{customerDetails?.attributes?.phone_number}</Text>
                     <Text fontWeight={'bold'} display='flex' justifyContent={'center'} px={4} fontSize={14}>2300 GH</Text>
                     <Text fontWeight={'bold'} display='flex' justifyContent={'center'} px={4} fontSize={14}>1</Text>
                     <Text fontWeight={'bold'} display='flex' justifyContent={'center'} px={4} fontSize={14}>400 GH</Text>
