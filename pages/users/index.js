@@ -1,6 +1,7 @@
-const { default: PageTitle } = require("~components/PageTitle")
-const { default: DashboardLayout } = require("~layouts/main")
-const { default: Users } = require("~modules/Users")
+import PageTitle from "~components/PageTitle";
+import DashboardLayout from "~layouts/main";
+import Users from "~modules/Users";
+
 
 const users = () =>{
    return(
