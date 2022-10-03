@@ -36,7 +36,7 @@ const PrintableBill = ({ customerDetails,appName }) => {
                 {/* </VStack> */}
             </SimpleGrid>
             <Flex border={'1px dashed'}>
-                <Text px={2} fontWeight={'bold'} fontSize={13}>{`${customerDetails?.attributes?.owner_name} || ID: ${customerDetails.attributes.property_id}`}</Text>
+                <Text px={2} fontWeight={'bold'} fontSize={13}>{`${customerDetails?.attributes?.owner_name} || ID: ${customerDetails?.attributes?.property_id}`}</Text>
             </Flex>
             <Flex dir='row' borderBottom={'1px solid'}>
                 <Text fontWeight={'bold'} fontSize={13} px={2}>TOWN</Text>
