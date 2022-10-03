@@ -19,7 +19,7 @@ const customerDetails = {
 const Bills = () => {
   return (
     <Card py={20} px={20} borderRadius={0}>
-      <PrintableBill customerDetails={customerDetails} appName="BUSINESS OPERATING PERMIT"/>
+      {/* <PrintableBill customerDetails={customerDetails} appName="BUSINESS OPERATING PERMIT"/> */}
     </Card>
   )
 }
