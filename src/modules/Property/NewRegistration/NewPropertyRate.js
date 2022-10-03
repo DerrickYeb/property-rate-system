@@ -8,6 +8,12 @@ import Card from '~components/Card/card'
 const NewPropertyRate = () => {
 
     const { register, handleSubmit } = useForm()
+    // const random = new 
+    // const generateCode = () => {
+    //     return (
+
+    //     )
+    // }
 
     const submitData = async (data) => {
         const propertyData = {

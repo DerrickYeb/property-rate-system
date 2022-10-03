@@ -1,4 +1,5 @@
 import { Button, Text } from "@chakra-ui/react";
+import Tablemenu from "~components/MenuComponent/Tablemenu";
 
 export const columnsDataDevelopment = [
   {
@@ -74,10 +75,10 @@ export const propertyColumns = [
   },
   {
 				
-    cell: () => <Button bg={'brand.500'} borderRadius={0} _hover={{backgroundColor:"none"}} fontSize={12} color="#fff" height={5} w={200}>View</Button>,
-    ignoreRowClick: true,
-    allowOverflow: true,
-    button: true,
+    cell: (row) => (<Tablemenu customerId={row.id}/>),
+    ignoreRowClick: false,
+    allowOverflow: false,
+    button: false,
   },
 ];
 

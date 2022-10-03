@@ -1,7 +1,8 @@
 import axios from "axios";
 
 
-let API_URL ='https://gpl-app-backend.herokuapp.com/api'
+//let API_URL ='https://gpl-app-backend.herokuapp.com/api'
+let API_URL = 'http://localhost:1337/api';
 
 export async function LoginApi(username, password) {
     let payload = {

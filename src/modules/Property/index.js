@@ -6,8 +6,9 @@ import { getAxios } from 'src/services/services.auth'
 import { propertyColumns } from '~components/Table/variables/columnsData'
 import FilterComponent from '~components/FilterComponent'
 import Link from 'next/link'
-import { Button, Flex } from '@chakra-ui/react'
+import { Button, Flex, Menu, MenuItem } from '@chakra-ui/react'
 import { PROPERTY_RATE_ADD_NEW } from 'src/config/routes.config'
+import Tablemenu from '~components/MenuComponent/Tablemenu'
 
 const PropertyIndex = () => {
     const [data, setData] = useState([])
@@ -48,10 +49,16 @@ const PropertyIndex = () => {
     }, [filterText, resetPaginationToggle]);
 
     const handleSelectedProperty = (userid) => {
-        setSelectedProperty(userid.id);
-        selected(true)
+        setSelectedProperty(userid);
+        // selected(true)
         toast('Selected property selected', toast.success)
         console.log('Selected property selected', selectedProperty);
+        return(
+            <Menu key={userid.id}>
+                <MenuItem>vIEW bILL
+                </MenuItem>
+            </Menu>
+        )
     }
 
 
@@ -88,13 +95,14 @@ const PropertyIndex = () => {
                     pagination
                     subHeader
                     noHeader
+                    contextComponent={Tablemenu}
                     striped
                     highlightOnHover
                     subHeaderComponent={subHeaderComponent}
                     selectableRows
                     persistTableHead
-                    // selectableRowSelected={handleSelectedProperty}
                     onRowClicked={handleSelectedProperty}
+                    
                 />
                 {/* </DataTableExtensions> */}
 

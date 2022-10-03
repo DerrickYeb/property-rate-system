@@ -1,8 +1,9 @@
 import { Button, Flex } from '@chakra-ui/react'
 import Link from 'next/link'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { PROPERTY_APP_PAYMENT_NEW_PAYMENT_URL } from 'src/config/routes.config'
+import { getAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
 
 const paymentColumn = [
@@ -12,19 +13,41 @@ const paymentColumn = [
   },
   {
     name:"Name",
-    selector:"name",
+    selector:"attributes.owner_name",
   },
   {
     name:"Tel",
-    selector:"phone_number",
+    selector:"attributes.phone_number",
   },
   {
     name:"Amount",
-    selector:"amount",
+    selector:"attributes.payment_amount",
   },
 ]
 
+
 const Payment = () => {
+  const[dataFetch, setData] = useState([])
+  const[propertyId,setPropertyId] = useState()
+
+  const fetchData = () =>{
+    getAxios('payments?populate=*').then((res)=>{
+      setData(res.data)
+    }).catch((err)=>{
+      console.error(err)
+    });
+  }
+  
+
+  useEffect(() => {
+    fetchData();
+      // getAxios(`properties?populate=*`).then((res)=>{
+      // }).catch((err)=>{
+      //   console.error(err)
+      // });
+  },[])
+
+
   return (
     <Card>
       <Link href={PROPERTY_APP_PAYMENT_NEW_PAYMENT_URL} passHref>
@@ -33,7 +56,7 @@ const Payment = () => {
           </Flex>
       </Link>
       <DataTable
-    data={[]}
+    data={dataFetch}
     columns={paymentColumn}
     title='Payments'/>
     </Card>

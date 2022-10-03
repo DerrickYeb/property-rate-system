@@ -55,7 +55,7 @@ const Login = () => {
                 shadow: 'lg',
             }} py={10} px={10} w={'30rem'} height={'30rem'} mt={'10rem'} border={'1px solid transparent'}>
                 <Box display='flex' justifyContent={'center'}>
-                    <Image height={120} src='https://upload.wikimedia.org/wikipedia/commons/thumb/5/59/Coat_of_arms_of_Ghana.svg/1200px-Coat_of_arms_of_Ghana.svg.png' alt='' sizes='50' />
+                    <Image height={120} src='/images/coatofarms.png' alt='' sizes='50' />
 
                 </Box>
                 <Box>
