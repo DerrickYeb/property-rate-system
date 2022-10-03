@@ -22,7 +22,7 @@ const AddPayment = ({ isOpen, onClose, data: customerId }) => {
                 <ModalHeader>{`Payment by ${data?.data.attributes?.owner_name} on ${dateTime}`}</ModalHeader>
                 <ModalCloseButton />
                 <ModalBody>
-                    <MakePaymentComponent customerDetails={data.data} />
+                    <MakePaymentComponent customerDetails={data?.data} />
                 </ModalBody>
                 {/* <ModalFooter>Print</ModalFooter> */}
             </ModalContent>
