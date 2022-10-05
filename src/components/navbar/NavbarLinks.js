@@ -7,9 +7,14 @@ import { FaEthereum } from "react-icons/fa";
 import Searchbar from './searchbar';
 import PropTypes from 'prop-types'
 import routes from 'src/routes';
+import { useRouter } from 'next/router';
 
 function NavbarHeaderLinks(props) {
     const { secondary } = props;
+    const route = useRouter();
+
+
+
   const { colorMode, toggleColorMode } = useColorMode();
   // Chakra Color Mode
   const navbarIcon = useColorModeValue("gray.400", "white");
@@ -250,7 +255,10 @@ function NavbarHeaderLinks(props) {
               _focus={{ bg: "none" }}
               color='red.400'
               borderRadius='8px'
-              px='14px'>
+              px='14px'
+              onClick={() =>{
+                routes.push('/')
+              }}>
               <Text fontSize='sm'>Log out</Text>
             </MenuItem>
           </Flex>
