@@ -44,7 +44,7 @@ const Login = () => {
                 status: 'error',
             })
             console.log(err.response)
-            setError('apiError',{message:err.response.data.error.message})
+            setError('apiError',{message:err.response.data?.error.message})
         });
 
     }

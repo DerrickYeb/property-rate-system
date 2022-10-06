@@ -23,9 +23,9 @@ const NewBop = () => {
                 business_description: data.business_description,
             }
         }
-        await postAxios('bop', bopData).then((response) => {
+        await postAxios('bops', bopData).then((response) => {
             toast({
-                title: 'PBOP Added Successfully',
+                title: 'BOP Added Successfully',
                 description: 'Propert was added successfully',
                 position:'top-right',
                 status: 'success',
