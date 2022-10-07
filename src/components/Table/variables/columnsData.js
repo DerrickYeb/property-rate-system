@@ -1,4 +1,5 @@
-import { Button, Text } from "@chakra-ui/react";
+import { Button, Menu, Text } from "@chakra-ui/react";
+import moment from "moment/moment";
 import Tablemenu from "~components/MenuComponent/Tablemenu";
 
 export const columnsDataDevelopment = [
@@ -42,17 +43,32 @@ export const columnsDataCheck = [
 export const propertyColumns = [
   {
     name: "Onwer Name",
-    selector: "attributes.owner_name",
+    selector: (row) => {
+      attributes.owner_name
+    },
     sortable: true
   },
   {
     name: "House Number",
-    selector: "attributes.house_number",
+    selector: (row) => {
+      attributes.house_number
+    },
     sortable: true
   },
   {
     name: "Town",
-    selector: "attributes.town",
+    selector: (row) => {
+      switch (row.attributes.town) {
+        case 1:
+          return 'Kwahu Tafo'
+          break;
+          case 2:
+          return 'Abetifi'
+          break;
+        default:
+          break;
+      }
+    },
     sortable: true,
   },
   {
@@ -74,8 +90,8 @@ export const propertyColumns = [
     selector: "attributes.phone_number",
   },
   {
-				
-    cell: (row) => (<Tablemenu customerId={row.id}/>),
+
+    cell: (row) => (<Tablemenu customerId={row.id} />),
     ignoreRowClick: false,
     allowOverflow: false,
     button: false,
@@ -117,45 +133,83 @@ export const bopColumns = [
     selector: "attributes.phone_number",
   },
   {
-				
-    cell: (row) => (<Tablemenu customerId={row.id}/>),
+
+    cell: (row) => (<Tablemenu customerId={row.id} />),
     ignoreRowClick: false,
     allowOverflow: false,
     button: false,
   },
 ];
 
-export const columnsDataComplex = [
+export const townsColumns = [
   {
-    name: "FIRST NAME",
-    selector: "first_name",
-  },
-  {
-    name: "LAST NAME",
-    selector: "last_name",
-  },
-  {
-    name: "USERNAME",
-    selector: "username",
-  },
-  {
-    name: "Email",
-    selector: "email",
-  },
-  {
-    name: "APP ACCESS",
-    selector: "application_access",
+    name: "Name",
+    selector: (row) => (
+      row.attributes.name
+    ),
   },
   {
     name: "DATE",
-    selector: "createdAt",
+    selector: (row) => (
+      moment().startOf('days', row.attributes.createdAt).fromNow()
+    ),
   },
-  
   {
-    name:"Action",
-    selector: "action",
-    render:(cell)=>{
-     return <Text color={'#fff'}>Hello</Text>
-    }
-  }
-];
+
+    cell: (row) => (<Menu colorScheme={'blue'} customerId={row.id} />),
+    ignoreRowClick: false,
+    allowOverflow: false,
+    button: false,
+  },
+]
+export const ratesColumns = [
+  {
+    name: "Name",
+    selector: (row) => (
+      row.attributes.name
+    ),
+  },
+  {
+    name: "Type",
+    selector: (row) => {
+      switch (row.attributes.type) {
+        case 1:
+          return "Business Operating Permit"
+          break;
+        default:
+          return "Property Rate App"
+          break;
+      }
+    },
+  },
+  {
+    name: "Amount",
+    selector: (row) => (
+      row.attributes.amount
+    ),
+  },
+  {
+    name: "Rate Payers",
+    selector: (row) => (
+      row.attributes.rate_payers
+    ),
+  },
+  {
+    name: "Total Amount",
+    selector: (row) => (
+      row.attributes.name
+    ),
+  },
+  {
+    name: "DATE",
+    selector: (row) => (
+      moment().startOf('days', row.attributes.createdAt).fromNow()
+    ),
+  },
+  {
+
+    cell: (row) => (<Menu colorScheme={'blue'} customerId={row.id} />),
+    ignoreRowClick: false,
+    allowOverflow: false,
+    button: false,
+  },]
