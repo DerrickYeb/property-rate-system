@@ -7,12 +7,13 @@ import Card from '~components/Card/card'
 
 const NewPropertyRate = () => {
 
-    const { register, handleSubmit,reset } = useForm()
+    const { register, handleSubmit,reset,setFocus } = useForm()
     const toast = useToast();
     const[dataFetched,setFetchData] = useState([]);
+    const [isLoading,setIsloading] = useState(false)
 
-    function makeid() {
-        var text = "";
+    function makeid(customerTown) {
+        var text = customerTown;
         var possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
       
         for (var i = 0; i < 5; i++)
@@ -34,67 +35,71 @@ const NewPropertyRate = () => {
    },[])
 
     const verify = (house_number,phone_number)=>{
-        dataFetched.data.forEach((res)=>{
-            if(house_number == res.attributes.house_number || phone_number == res.attributes.phone_number){
-                toast({
-                    title:"House Number or Phone Number exists",
-                    description:"Check house number or phone number",
-                    position:"top-right",
-                    status:'warning',
-                    duration: 3000
-                })
-            }
+      let resp =  dataFetched.data.forEach((res)=>{
+            return house_number == res.attributes.house_number || phone_number == res.attributes.phone_number;
         })
-        return true;
+        // setIsloading(false)
+        console.log("hmm",resp)
+        return resp;
     }
 
     const submitData = async (data) => {
+        setIsloading(true);
       let response =  verify(data.house_number,data.phone_number);
-        if(response){
-            return null;
-        }
-        const propertyData = {
-            data: {
-                owner_name: data.owner_name,
-                house_number: data.house_number,
-                phone_number: data.phone_number,
-                amount: data.amount,
-                arrears: data.arrears,
-                town: data.town,
-                street_name: data.street_name,
-                gps_address: data.gps_address,
-                business_description: data.business_description,
-            }
-        }
-        await postAxios('properties', propertyData).then((response) => {
-            toast({
-                title: 'Property Added Successfully',
-                description: 'Propert was added successfully',
-                position:'top-right',
-                status: 'success',
-                duration: 3000
-            })
-            reset({
-                owner_name:   '',
-                house_number: '',
-                phone_number: '',
-                amount:       '',
-                arrears:      '',
-                town:         '',
-                street_name: '',
-                gps_address: '',
-                business_description: '',
-            })
+      console.log("Verification",response)
 
-        }).catch((error) => {
-            toast({
-                title: 'error.message',
-                description: error.message,
-                position:'top-right',
-                status: 'error',
-                duration: 3000
-            })
-        });
+      const propertyData = {
+        data: {
+            owner_name: data.owner_name,
+            house_number: data.house_number,
+            phone_number: data.phone_number,
+            amount: data.amount,
+            arrears: data.arrears,
+            town: data.town,
+            street_name: data.street_name,
+            gps_address: data.gps_address,
+            business_description: data.business_description,
+        }
+    }
+
+        if(response){
+            setFocus("phone_number",{shouldSelect:true})
+            setFocus("house_number",{shouldSelect:true})
+        }
+        else{
+            await postAxios('properties', propertyData).then((response) => {
+                setIsloading(false)
+               toast({
+                   title: 'Property Added Successfully',
+                   description: 'Propert was added successfully',
+                   position:'top-right',
+                   status: 'success',
+                   duration: 3000
+               })
+               reset({
+                   owner_name:   '',
+                   house_number: '',
+                   phone_number: '',
+                   amount:       '',
+                   arrears:      '',
+                   town:         '',
+                   street_name: '',
+                   gps_address: '',
+                   business_description: '',
+               })
+   
+           }).catch((error) => {
+               toast({
+                   title: 'error.message',
+                   description: error.message,
+                   position:'top-right',
+                   status: 'error',
+                   duration: 3000
+               })
+                setIsloading(false)
+           });
+        }
+        
         console.log(data)
     }
 

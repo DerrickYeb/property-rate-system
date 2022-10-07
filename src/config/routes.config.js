@@ -51,3 +51,5 @@ export const NEW_FEEDBACK_URL = "/feedback/new"
 //Settings
 export const SETTINGS_URL = "/settings"
 export const NEW_SETTINGS_URL = "/settings/new"
+export const SETTINGS_ADD_NEW_RATE = "/settings/rates/add"
+export const SETTINGS_RATES = "/settings/rates"

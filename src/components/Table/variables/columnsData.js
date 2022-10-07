@@ -82,6 +82,49 @@ export const propertyColumns = [
   },
 ];
 
+export const bopColumns = [
+  {
+    name: "Business Name",
+    selector: "attributes.business_name",
+    sortable: true
+  },
+  // {
+  //   name: "House Number",
+  //   selector: "attributes.house_number",
+  //   sortable: true
+  // },
+  {
+    name: "Town",
+    selector: "attributes.town",
+    sortable: true,
+  },
+  {
+    name: "Street Name",
+    selector: "attributes.land_mark",
+    sortable: true
+  },
+  {
+    name: "Amount",
+    selector: "attributes.amount",
+    sortable: true,
+  },
+  {
+    name: "ARREARS",
+    selector: "attributes.arrears",
+  },
+  {
+    name: "PHONE",
+    selector: "attributes.phone_number",
+  },
+  {
+				
+    cell: (row) => (<Tablemenu customerId={row.id}/>),
+    ignoreRowClick: false,
+    allowOverflow: false,
+    button: false,
+  },
+];
+
 export const columnsDataComplex = [
   {
     name: "FIRST NAME",

@@ -3,7 +3,7 @@ import React, { useEffect, useMemo, useState } from 'react'
 import DataTable from 'react-data-table-component'
 import { toast } from 'react-hot-toast'
 import { getAxios } from 'src/services/services.auth'
-import { propertyColumns } from '~components/Table/variables/columnsData'
+import { bopColumns, propertyColumns } from '~components/Table/variables/columnsData'
 import FilterComponent from '~components/FilterComponent'
 import Link from 'next/link'
 import { Button, Flex } from '@chakra-ui/react'
@@ -15,7 +15,7 @@ const BOPIndex = () => {
 
 
   const fetchData = async () => {
-    await getAxios('properties').then((response) => {
+    await getAxios('bops').then((response) => {
       setData(response.data);
     })
   }
@@ -74,7 +74,7 @@ const BOPIndex = () => {
       <Card>
         {/* <DataTableExtensions {...tableData}> */}
         <DataTable
-          columns={propertyColumns}
+          columns={bopColumns}
           data={filteredItems}
           title="BOP"
           fixedHeader
@@ -84,11 +84,9 @@ const BOPIndex = () => {
           striped
           highlightOnHover
           // subHeaderComponent={subHeaderComponentMemo}
-          selectableRows
+          // selectableRows
           persistTableHead
           subHeaderComponent={subHeaderComponent}
-          // selectableRowSelected={handleSelectedProperty}
-          onRowClicked={handleSelectedProperty}
         />
         {/* </DataTableExtensions> */}
 

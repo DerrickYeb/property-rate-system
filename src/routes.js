@@ -1,8 +1,8 @@
 import { SettingsIcon } from "@chakra-ui/icons";
 import { Icon } from "@chakra-ui/react"
 import { IoPeople } from "react-icons/io5";
-import { MdFeedback, MdHome } from "react-icons/md";
-import { ALL_FEEDBACK_URL, ALL_USERS, DASHBOARD_URL, SETTINGS_URL } from "./config/routes.config";
+import { MdFeedback, MdHome, MdRateReview } from "react-icons/md";
+import { ALL_FEEDBACK_URL, ALL_USERS, DASHBOARD_URL, SETTINGS_RATES, SETTINGS_URL } from "./config/routes.config";
 
 const routes = [
     {
@@ -22,6 +22,12 @@ const routes = [
         layout: "property",
         path: ALL_FEEDBACK_URL,
         icon: <Icon as={MdFeedback} width='20px' height='20px' color='inherit' />,
+      },
+      {
+        name: "Rates",
+        layout: "rate",
+        path: SETTINGS_RATES,
+        icon: <Icon as={MdRateReview} width='20px' height='20px' color='inherit' />,
       },
       {
         name: "Settings",

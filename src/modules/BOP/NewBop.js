@@ -1,25 +1,24 @@
-import { Box, Button, FormControl, FormLabel, Input, Select, SimpleGrid, Textarea } from '@chakra-ui/react'
+import { Box, Button, FormControl, FormLabel, Input, Select, SimpleGrid, Textarea, useToast } from '@chakra-ui/react'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { toast } from 'react-hot-toast'
 import { postAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
 
 const NewBop = () => {
 
     const { register, handleSubmit } = useForm()
+    const toast = useToast();
 
     const submitData = async (data) => {
         const bopData = {
             data: {
-                owner_name: data.owner_name,
-                house_number: data.house_number,
+                business_name: data.owner_name,
                 phone_number: data.phone_number,
                 amount: data.amount,
                 arrears: data.arrears,
                 town: data.town,
-                street_name: data.street_name,
-                gps_address: data.gps_address,
+                land_mark: data.street_name,
+                digital_address: data.gps_address,
                 business_description: data.business_description,
             }
         }
@@ -40,7 +39,7 @@ const NewBop = () => {
                 duration: 3000
             })
         });
-        console.log(data)
+        console.log(bopData)
     }
 
     return (
