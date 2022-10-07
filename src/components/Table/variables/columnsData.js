@@ -215,6 +215,8 @@ export const ratesColumns = [
       switch (row.attributes.type) {
         case 1:
           return "Business Operating Permit"
+          case 2:
+          return "Property Rate App"
         default:
           return "Property Rate App"
       }

@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, FormLabel, Input, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { getAxios, postAxios } from 'src/services/services.auth'
 import useSWR from 'swr'
 import Card from '~components/Card/card'
 
@@ -9,7 +10,7 @@ const AddTown = () => {
     const toast = useToast();
     const [isLoading, setIsloading] = useState(false);
 
-    const { data } = useSWR('apps', getAxios);
+    const { data } = useSWR('apps', getAxios());
     console.log(data)
 
     const submitRateData = async (data) => {
