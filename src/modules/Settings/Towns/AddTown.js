@@ -1,6 +1,7 @@
 import { Box, Button, FormControl, FormLabel, Input, useToast } from '@chakra-ui/react'
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import useSWR from 'swr'
 import Card from '~components/Card/card'
 
 const AddTown = () => {

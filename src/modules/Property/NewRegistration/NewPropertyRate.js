@@ -47,7 +47,7 @@ const NewPropertyRate = () => {
         setIsloading(true);
       let response =  verify(data.house_number,data.phone_number);
       console.log("Verification",response)
-
+    let propertyId = makeid(data.town)
       const propertyData = {
         data: {
             owner_name: data.owner_name,
@@ -59,6 +59,7 @@ const NewPropertyRate = () => {
             street_name: data.street_name,
             gps_address: data.gps_address,
             business_description: data.business_description,
+            property_id:propertyId
         }
     }
 
