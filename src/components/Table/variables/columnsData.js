@@ -43,16 +43,16 @@ export const columnsDataCheck = [
 export const propertyColumns = [
   {
     name: "Onwer Name",
-    selector: (row) => {
+    selector: (row) => (
       attributes.owner_name
-    },
+    ),
     sortable: true
   },
   {
     name: "House Number",
-    selector: (row) => {
-      attributes.house_number
-    },
+    selector: (row) => (
+      row.attributes.house_number
+    ),
     sortable: true
   },
   {
@@ -61,10 +61,16 @@ export const propertyColumns = [
       switch (row.attributes.town) {
         case 1:
           return 'Kwahu Tafo'
-          break;
+          // break;
           case 2:
           return 'Abetifi'
-          break;
+          // break;
+          case 3:
+          return 'Pepease'
+          case 4:
+          return 'Bukuruwa'
+          case 5:
+          return 'Nkwatia'
         default:
           break;
       }
