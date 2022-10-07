@@ -5,7 +5,7 @@ import DataTable from 'react-data-table-component'
 import { NEW_USER_REGISTRATION_URL } from 'src/config/routes.config'
 import { getAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
-import { columnsDataComplex } from '~components/Table/variables/columnsData'
+//import { columnsDataComplex } from '~components/Table/variables/columnsData'
 
 const data =
   [
@@ -66,7 +66,7 @@ const Users = () => {
       <DataTable 
       title='Users'
       data={fetchData}
-      columns={columnsDataComplex}
+ 
       pointerOnHover
       dense
       striped
