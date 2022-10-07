@@ -21,22 +21,56 @@ export const columnsDataDevelopment = [
   },
 ];
 
-export const columnsDataCheck = [
+export const columnsDataComplex = [
   {
-    Header: "NAME",
-    accessor: "name",
+    name: "NAME",
+    selector: (row) =>(
+      `${row.first_name} ${row.last_name}`
+    ),
   },
   {
-    Header: "PROGRESS",
-    accessor: "progress",
+    name: "Department",
+    selector: (row) =>{
+      switch (row.department) {
+        case "1":
+          return "DCE"
+        case "2":return "DCD"
+        case "3":return "PM"
+        case "4":return "Finance-DFO"
+        case "5":return "Budget"
+        case "6":return "Planning"
+        case "7":return "Procurement"
+        case "8":return "Internal Audit"
+        case '9':return "Finance - Collector"
+        case '10':return "Finance - NABCO/NSS"
+        case '11':return "Finance - Office"
+        case '12':return "MIS - NABCO/NSS"
+        case '13':return "Physical Planning"
+        case '14':return "F & A Committee"
+        case '15':return "Administration"
+        default:
+          break;
+      }
+    },
+  },
+
+  {
+    name: "Username",
+    selector: (row)=>{
+      return row.username
+    },
   },
   {
-    Header: "QUANTITY",
-    accessor: "quantity",
+    name: "Application Access",
+    selector: (row)=>{
+      return row.application_access
+    },
   },
   {
-    Header: "DATE",
-    accessor: "date",
+    name: "Created Date",
+    selector: (row) =>{
+     return moment().startOf('days',row.createdAt).fromNow();
+    },
   },
 ];
 
@@ -181,10 +215,8 @@ export const ratesColumns = [
       switch (row.attributes.type) {
         case 1:
           return "Business Operating Permit"
-          break;
         default:
           return "Property Rate App"
-          break;
       }
     },
   },

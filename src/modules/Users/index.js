@@ -68,6 +68,8 @@ const Users = () => {
       data={fetchData}
       columns={columnsDataComplex}
       pointerOnHover
+      dense
+      striped
       highlightOnHover
       pagination
       />
