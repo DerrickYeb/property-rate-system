@@ -24,30 +24,30 @@ export const columnsDataDevelopment = [
 export const columnsDataComplex = [
   {
     name: "NAME",
-    selector: (row) =>(
+    selector: (row) => (
       `${row.first_name} ${row.last_name}`
     ),
   },
   {
     name: "Department",
-    selector: (row) =>{
+    selector: (row) => {
       switch (row.department) {
         case "1":
           return "DCE"
-        case "2":return "DCD"
-        case "3":return "PM"
-        case "4":return "Finance-DFO"
-        case "5":return "Budget"
-        case "6":return "Planning"
-        case "7":return "Procurement"
-        case "8":return "Internal Audit"
-        case '9':return "Finance - Collector"
-        case '10':return "Finance - NABCO/NSS"
-        case '11':return "Finance - Office"
-        case '12':return "MIS - NABCO/NSS"
-        case '13':return "Physical Planning"
-        case '14':return "F & A Committee"
-        case '15':return "Administration"
+        case "2": return "DCD"
+        case "3": return "PM"
+        case "4": return "Finance-DFO"
+        case "5": return "Budget"
+        case "6": return "Planning"
+        case "7": return "Procurement"
+        case "8": return "Internal Audit"
+        case '9': return "Finance - Collector"
+        case '10': return "Finance - NABCO/NSS"
+        case '11': return "Finance - Office"
+        case '12': return "MIS - NABCO/NSS"
+        case '13': return "Physical Planning"
+        case '14': return "F & A Committee"
+        case '15': return "Administration"
         default:
           break;
       }
@@ -56,54 +56,54 @@ export const columnsDataComplex = [
 
   {
     name: "Username",
-    selector: (row)=>{
+    selector: (row) => {
       return row.username
     },
   },
   {
     name: "Application Access",
-    selector: (row)=>{
+    selector: (row) => {
       return row.application_access
     },
   },
   {
     name: "Created Date",
-    selector: (row) =>{
-     return moment().startOf('days',row.createdAt).fromNow();
+    selector: (row) => {
+      return moment().startOf('days', row.createdAt).fromNow();
     },
   },
 ];
 
 export const propertyColumns = [
   {
-    name: "Onwer Name",
+    name: "Owner's Name",
     selector: (row) => (
-      attributes.owner_name
+      row.attributes?.owner_name
     ),
     sortable: true
   },
   {
     name: "House Number",
     selector: (row) => (
-      row.attributes.house_number
+      row.attributes?.house_number
     ),
     sortable: true
   },
   {
     name: "Town",
     selector: (row) => {
-      switch (row.attributes.town) {
-        case 1:
+      switch (row.attributes?.town) {
+        case "1":
           return 'Kwahu Tafo'
-          // break;
-          case 2:
+        // break;
+        case "2":
           return 'Abetifi'
-          // break;
-          case 3:
+        // break;
+        case "3":
           return 'Pepease'
-          case 4:
+        case "4":
           return 'Bukuruwa'
-          case 5:
+        case "5":
           return 'Nkwatia'
         default:
           break;
@@ -113,21 +113,29 @@ export const propertyColumns = [
   },
   {
     name: "Street Name",
-    selector: "attributes.street_name",
+    selector: (row) =>{
+      return row.attributes?.street_name
+    },
     sortable: true
   },
   {
     name: "Amount",
-    selector: "attributes.amount",
+    selector: (row) =>{
+      return row.attributes?.amount
+    },
     sortable: true,
   },
   {
     name: "ARREARS",
-    selector: "attributes.arrears",
+    selector: (row) =>{
+      return row.attributes?.arrears
+    },
   },
   {
     name: "PHONE",
-    selector: "attributes.phone_number",
+    selector: (row) =>{
+      return row.attributes?.phone_number
+    },
   },
   {
 
@@ -151,7 +159,24 @@ export const bopColumns = [
   // },
   {
     name: "Town",
-    selector: "attributes.town",
+    selector: (row) => {
+      switch (row.attributes?.town) {
+        case "1":
+          return 'Kwahu Tafo'
+        // break;
+        case "2":
+          return 'Abetifi'
+        // break;
+        case "3":
+          return 'Pepease'
+        case "4":
+          return 'Bukuruwa'
+        case "5":
+          return 'Nkwatia'
+        default:
+          break;
+      }
+    },
     sortable: true,
   },
   {
@@ -215,7 +240,7 @@ export const ratesColumns = [
       switch (row.attributes.type) {
         case 1:
           return "Business Operating Permit"
-          case 2:
+        case 2:
           return "Property Rate App"
         default:
           return "Property Rate App"

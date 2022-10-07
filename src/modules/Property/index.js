@@ -90,8 +90,8 @@ const PropertyIndex = () => {
                     columns={propertyColumns}
                     data={filteredItems}
                     title="Property Rate"
-                    fixedHeader
-                    fixedHeaderScrollHeight='300px'
+                    // fixedHeader
+                    // fixedHeaderScrollHeight='300px'
                     pagination
                     subHeader
                     noHeader

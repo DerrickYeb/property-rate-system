@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, FormLabel, Input, Select, SimpleGrid, Textarea, useToast } from '@chakra-ui/react'
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { postAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
@@ -8,8 +8,10 @@ const NewBop = () => {
 
     const { register, handleSubmit } = useForm()
     const toast = useToast();
+    const [loadingSet,setIsLoading] = useState(false)
 
     const submitData = async (data) => {
+        setIsLoading(true)
         const bopData = {
             data: {
                 business_name: data.owner_name,
@@ -30,6 +32,7 @@ const NewBop = () => {
                 status: 'success',
                 duration: 3000
             })
+            setIsLoading(false)
         }).catch((error) => {
             toast({
                 title: 'PBOP Failed',
@@ -38,6 +41,7 @@ const NewBop = () => {
                 status: 'error',
                 duration: 3000
             })
+            setIsLoading(false)
         });
         console.log(bopData)
     }
@@ -264,7 +268,7 @@ const NewBop = () => {
                     </FormControl>
                 </SimpleGrid>
                 <Box py={8} display='flex' justifyContent='center'>
-                    <Button w={'100%'} type="onSubmit" maxW="40%" variant={'brand'}>Submit</Button>
+                    <Button isLoading={loadingSet} w={'100%'} type="onSubmit" maxW="40%" variant={'brand'}>Submit</Button>
                 </Box>
             </form>
         </Card>
