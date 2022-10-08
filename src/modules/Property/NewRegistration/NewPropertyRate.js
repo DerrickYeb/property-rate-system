@@ -118,19 +118,19 @@ const NewPropertyRate = () => {
                     columnGap={5} rowGap={2}>
                     <FormControl>
                         <FormLabel>Owner&apos;s Name</FormLabel>
-                        <Input {...register("owner_name")} variant={'main'} borderColor={'brand.500'} required/>
+                        <Input {...register("owner_name")}   required/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>House Number</FormLabel>
-                        <Input {...register("house_number")} variant={'main'} borderColor={'brand.500'} required/>
+                        <Input {...register("house_number")}   required/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>Telephone Number</FormLabel>
-                        <Input {...register("phone_number")} variant={'main'} borderColor={'brand.500'} required/>
+                        <Input {...register("phone_number")}  required/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>Amount</FormLabel>
-                        <Select variant={'main'} {...register("amount")} required>
+                        <Select  {...register("amount")} required>
                             <option value="">Select </option>
                             <option value="1">1-3 BEDROOMS</option>
                             <option value="2">4 BEDROOMS AND ABOVE</option>
@@ -143,11 +143,11 @@ const NewPropertyRate = () => {
                     </FormControl>
                     <FormControl>
                         <FormLabel>Arrears</FormLabel>
-                        <Input {...register("arrears")} variant={'main'} borderColor={'brand.500'} required/>
+                        <Input {...register("arrears")} required/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>Town</FormLabel>
-                        <Select s variant={'main'} {...register("town")} required>
+                        <Select  {...register("town")} required>
                             <option value="">Select </option>
                             <option value="1">KWAHU TAFO</option>
                             <option value="2">ABETIFI</option>
@@ -159,15 +159,15 @@ const NewPropertyRate = () => {
                     </FormControl>
                     <FormControl>
                         <FormLabel>Street Name/Landmark</FormLabel>
-                        <Input {...register("street_name")} variant={'main'} borderColor={'brand.500'} required/>
+                        <Input {...register("street_name")}  required/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>GPS Address</FormLabel>
-                        <Input {...register("gps_address")} variant={'main'} borderColor={'brand.500'} required/>
+                        <Input {...register("gps_address")}  required/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>Business Description</FormLabel>
-                        <Textarea {...register("business_description")} borderColor={'brand.500'} required/>
+                        <Textarea {...register("business_description")}  required/>
                     </FormControl>
                 </SimpleGrid>
                 <Box py={8} display='flex' justifyContent='center'>

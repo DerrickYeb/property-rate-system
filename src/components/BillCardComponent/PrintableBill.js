@@ -10,7 +10,7 @@ const PrintableBill = ({ customerDetails, appName }) => {
         '3':"Pepease",
         '4':"Bukuruwa",
         '5':"Nkwatia"
-    })[customerDetails.attributes.town]
+    })[customerDetails.attributes?.town]
     console.log(customerDetails)
     return (
         <Box border={'1px solid'} width={{ base: 600, lg: 800 }} height={'60vh'}>

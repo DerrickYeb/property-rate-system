@@ -11,7 +11,7 @@ const Searchbar = (props) => {
   const inputBg = useColorModeValue("secondaryGray.300", "navy.900");
   const inputText = useColorModeValue("gray.700", "gray.100");
   return (
-    <InputGroup w={{ base: "100%", md: "200px" }} {...rest}>
+    <InputGroup w={{ base: "100%", md: "300px" }} {...rest}>
       <InputLeftElement
         // eslint-disable-next-line react/no-children-prop
         children={

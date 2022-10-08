@@ -6,7 +6,7 @@ import Card from '~components/Card/card'
 
 const NewBop = () => {
 
-    const { register, handleSubmit } = useForm()
+    const { register, handleSubmit,reset } = useForm()
     const toast = useToast();
     const [loadingSet,setIsLoading] = useState(false)
 
@@ -33,6 +33,16 @@ const NewBop = () => {
                 duration: 3000
             })
             setIsLoading(false)
+            reset({
+                business_name: '',
+                phone_number: '',
+                amount: '',
+                arrears: '',
+                town: '',
+                land_mark: '',
+                digital_address: '',
+                business_description: '',
+            })
         }).catch((error) => {
             toast({
                 title: 'PBOP Failed',
@@ -60,15 +70,15 @@ const NewBop = () => {
                     columnGap={5} rowGap={2}>
                     <FormControl>
                         <FormLabel>Owner&apos;s Name/Business Name</FormLabel>
-                        <Input {...register("owner_name")} variant={'main'} borderColor={'brand.500'} />
+                        <Input {...register("owner_name")} />
                     </FormControl>
                     <FormControl>
                         <FormLabel>Telephone Number</FormLabel>
-                        <Input {...register("phone_number")} variant={'main'} borderColor={'brand.500'} />
+                        <Input {...register("phone_number")} />
                     </FormControl>
                     <FormControl>
                         <FormLabel>Amount</FormLabel>
-                        <Select variant={'main'} {...register("amount")}>
+                        <Select  {...register("amount")}>
                             <option value="">Select </option>
                             <option value="1">RURAL BANK BRANCH</option>
                             <option value="2">RURAL BANK MAIN</option>
@@ -241,11 +251,11 @@ const NewBop = () => {
                     </FormControl>
                     <FormControl>
                         <FormLabel>Arrears</FormLabel>
-                        <Input {...register("arrears")} variant={'main'} borderColor={'brand.500'} />
+                        <Input {...register("arrears")}  />
                     </FormControl>
                     <FormControl>
                         <FormLabel>Town</FormLabel>
-                        <Select s variant={'main'} {...register("town")}>
+                        <Select  {...register("town")}>
                             <option value="1">KWAHU TAFO</option>
                             <option value="2">ABETIFI</option>
                             <option value="3">BOKURUWA</option>
@@ -256,19 +266,19 @@ const NewBop = () => {
                     </FormControl>
                     <FormControl>
                         <FormLabel>Street Name/Landmark</FormLabel>
-                        <Input {...register("street_name")} variant={'main'} borderColor={'brand.500'} />
+                        <Input {...register("street_name")} />
                     </FormControl>
                     <FormControl>
                         <FormLabel>GPS Address</FormLabel>
-                        <Input {...register("gps_address")} variant={'main'} borderColor={'brand.500'} />
+                        <Input {...register("gps_address")}/>
                     </FormControl>
                     <FormControl>
                         <FormLabel>Business Description</FormLabel>
-                        <Textarea {...register("business_description")} borderColor={'brand.500'} />
+                        <Textarea {...register("business_description")} />
                     </FormControl>
                 </SimpleGrid>
                 <Box py={8} display='flex' justifyContent='center'>
-                    <Button isLoading={loadingSet} w={'100%'} type="onSubmit" maxW="40%" variant={'brand'}>Submit</Button>
+                    <Button isLoading={loadingSet} _hover={"none"} w={'100%'} type="onSubmit" maxW="40%" variant={'solid'} bg="#5162C3" color={'white'}>Submit</Button>
                 </Box>
             </form>
         </Card>

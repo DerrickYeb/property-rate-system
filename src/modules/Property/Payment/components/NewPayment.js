@@ -1,44 +1,42 @@
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
-import { Select } from '@mantine/core'
-import React from 'react'
+// import { Select } from '@mantine/core'
+import React, { useState } from 'react'
+import { getAxios } from 'src/services/services.auth'
+import useSWR from 'swr'
 import Card from '~components/Card/card'
+import Searchbar from '~components/navbar/searchbar'
+import { MakePaymentComponent } from '~modules/BOP/Payment/MakePaymentComponent'
+import Select from 'react-select'
 
 const NewPayment = () => {
-  return (
-    <Card>
-        <Box>
-            <Select label="Select Customer Name"
-            data={[]} width={{base:"100px",lg:'200px'}} style={{
-                width:'400px'
-            }} withAsterisk/>
-            <Select label="Enter GCR Number"
-            data={[]} width={"300px"} style={{
-                width:'400px'
-            }}/>
-            <Text pb={2} pt={5}>Customer Details</Text>
-            <SimpleGrid columns={2} gap={4}>
-                <Box rowGap={6}>
-                <Text>Name</Text>
-                <Text>Yaw Mensah</Text>
-                </Box>
-                <Box>
-                <Text>Yaw Mensah</Text>
-                <Text>Yaw Mensah</Text>
-                </Box>
-                <Box>
-                <Text>Yaw Mensah</Text>
-                <Text>Yaw Mensah</Text>
-                </Box>
-                <Box>
-                <Text>Yaw Mensah</Text>
-                <Text>Yaw Mensah</Text>
-                </Box>
-            </SimpleGrid>
-            <Text>Payment History</Text>
+     const { data, error } = useSWR(`properties`, getAxios);
+    const[showDetails,setShowDetails] = useState(false)
+    const [customerdata,setCustomerData] = useState([])
 
-        </Box>
-    </Card>
-  )
+    console.log(data)
+
+    const searchCustomer = (e)=>{
+       const customer = e.value;
+       console.log(customer)
+
+       setShowDetails(true)
+
+    }
+    const Options = data?.data.map((item)=>(
+        {label:item.attributes.owner_name, value:item.id}
+    ));
+    return (
+        <Card>
+            <Box pb={10}>
+                {/* <Searchbar width="200px"/> */}
+                {/* <Select autoComplete searchable data={[
+                    {value:'2',label:"Den"}
+                ]}/> */}
+                <Select isSearchable options={Options} onChange={(e) => searchCustomer(e)}/>
+            </Box>
+            {showDetails && <MakePaymentComponent customerDetails={data?.data} />}
+        </Card>
+    )
 }
 
 export default NewPayment
