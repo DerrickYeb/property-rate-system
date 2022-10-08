@@ -1,6 +1,6 @@
 import { Box, SimpleGrid, Text } from '@chakra-ui/react'
 // import { Select } from '@mantine/core'
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { getAxios } from 'src/services/services.auth'
 import useSWR from 'swr'
 import Card from '~components/Card/card'
@@ -12,19 +12,37 @@ const NewPayment = () => {
      const { data, error } = useSWR(`properties`, getAxios);
     const[showDetails,setShowDetails] = useState(false)
     const [customerdata,setCustomerData] = useState([])
+    const [customerId,setCustomerId] = useState('')
 
     console.log(data)
 
     const searchCustomer = (e)=>{
        const customer = e.value;
+       setCustomerId(customer)
        console.log(customer)
-
-       setShowDetails(true)
-
+    //    await getAxios(`properties/${customer}`).then((response) => {
+    //     setCustomerData(response.data);
+    //    }).catch((err) => {
+    //     console.log(err)
+    //    });
+    //    setShowDetails(true)
+    //     console.log(customerdata)
     }
     const Options = data?.data.map((item)=>(
         {label:item.attributes.owner_name, value:item.id}
     ));
+
+    useEffect(() => {
+             getAxios(`properties/${customerId}`).then((response) => {
+             setCustomerData(response.data);
+            }).catch((err) => {
+             console.log(err)
+            });
+            setShowDetails(true)
+             console.log("customer",customerdata)
+         
+    },[])
+
     return (
         <Card>
             <Box pb={10}>
@@ -32,9 +50,9 @@ const NewPayment = () => {
                 {/* <Select autoComplete searchable data={[
                     {value:'2',label:"Den"}
                 ]}/> */}
-                <Select isSearchable options={Options} onChange={(e) => searchCustomer(e)}/>
+                <Select isSearchable options={Options} isOptionSelected={(e)=> searchCustomer(e)}/>
             </Box>
-            {showDetails && <MakePaymentComponent customerDetails={data?.data} />}
+            {showDetails && <MakePaymentComponent customerDetails={customerdata} />}
         </Card>
     )
 }

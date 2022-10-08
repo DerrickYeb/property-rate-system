@@ -44,7 +44,6 @@ const NewPropertyRate = () => {
     }
 
     const submitData = async (data) => {
-        setIsloading(true);
       let response =  verify(data.house_number,data.phone_number);
       console.log("Verification",response)
     let propertyId = makeid(data.town)
@@ -68,6 +67,7 @@ const NewPropertyRate = () => {
             setFocus("house_number",{shouldSelect:true})
         }
         else{
+            setIsloading(true);
             await postAxios('properties', propertyData).then((response) => {
                 setIsloading(false)
                toast({
@@ -88,6 +88,7 @@ const NewPropertyRate = () => {
                    gps_address: '',
                    business_description: '',
                })
+               setIsloading(false)
    
            }).catch((error) => {
                toast({
@@ -171,7 +172,7 @@ const NewPropertyRate = () => {
                     </FormControl>
                 </SimpleGrid>
                 <Box py={8} display='flex' justifyContent='center'>
-                    <Button w={'100%'} type="onSubmit" maxW="40%" variant={'brand'}>Submit</Button>
+                    <Button w={'100%'} isLoading={isLoading} type="onSubmit" maxW="40%" variant={'brand'}>Submit</Button>
                 </Box>
             </form>
         </Card>

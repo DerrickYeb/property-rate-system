@@ -1,5 +1,5 @@
 import { Box, Button, FormControl, FormLabel, Input, SimpleGrid, useToast } from '@chakra-ui/react';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { postAxios } from 'src/services/services.auth';
 
@@ -44,6 +44,10 @@ export const MakePaymentComponent = ({ customerDetails }) => {
             });
         });
     };
+
+    useEffect(()=>{
+        customerDetails
+    },[])
 
     return (
         <Box>
