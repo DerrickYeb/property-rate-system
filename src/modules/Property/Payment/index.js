@@ -7,17 +7,21 @@ import { getAxios } from 'src/services/services.auth'
 import Card from '~components/Card/card'
 
 const paymentColumn = [
-  {
-    name:"id",
-    selector:"id",
-  },
+  // {
+  //   name:"id",
+  //   selector:"id",
+  // },
   {
     name:"Name",
-    selector:"attributes.owner_name",
+    selector:(row)=>(
+      row.attributes.property.data.attributes.owner_name
+    ),
   },
   {
-    name:"Tel",
-    selector:"attributes.phone_number",
+    name:"Tel", 
+    selector:(row)=>(
+      row.attributes.property.data.attributes.phone_number
+    ),
   },
   {
     name:"Amount",
@@ -41,10 +45,6 @@ const Payment = () => {
 
   useEffect(() => {
     fetchData();
-      // getAxios(`properties?populate=*`).then((res)=>{
-      // }).catch((err)=>{
-      //   console.error(err)
-      // });
   },[])
 
 

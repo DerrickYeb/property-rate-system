@@ -9,9 +9,9 @@ function MyApp({ Component, pageProps }) {
   return <ChakraProvider theme={theme}>
     {/* <MantineProvider withGlobalStyles withNormalizeCSS theme={theme}> */}
     <NextNProgress />
-    {/* <RouteGuard> */}
+    {/* <RouteGuard>  */}
     <Component {...pageProps} />
-    {/* </RouteGuard> */}
+     {/* </RouteGuard> */}
     {/* </MantineProvider> */}
   </ChakraProvider>
 }
