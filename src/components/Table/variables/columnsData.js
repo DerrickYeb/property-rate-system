@@ -1,6 +1,10 @@
-import { Button, Menu, Text } from "@chakra-ui/react";
+import { Button, ButtonGroup, IconButton, Menu, Text } from "@chakra-ui/react";
 import moment from "moment/moment";
+import { FaEdit } from "react-icons/fa";
+import { BsArrowUp, BsArrowUpRight, BsFillTrashFill } from "react-icons/bs";
 import Tablemenu from "~components/MenuComponent/Tablemenu";
+import Link from "next/link";
+import DeleteItemByRow from "~hooks/deleteItemByRow";
 
 export const columnsDataDevelopment = [
   {
@@ -72,6 +76,25 @@ export const columnsDataComplex = [
       return moment().startOf('days', row.createdAt).fromNow();
     },
   },
+  {
+    selector: (row) => {
+      return <ButtonGroup variant={'solid'} spacing={3} size='sm'>
+        {/* <IconButton
+          colorScheme="blue"
+          icon={<BsArrowUpRight />}
+          aria-label="Up"
+        /> */}
+        <Link href={'users/edit/'+row.id}>
+        <IconButton
+          colorScheme="green"
+          icon={<FaEdit />}
+          aria-label="Edit"
+        />
+        </Link>
+        <DeleteItemByRow rowId={row.id}/>
+      </ButtonGroup>
+    }
+  }
 ];
 
 export const propertyColumns = [
@@ -113,27 +136,27 @@ export const propertyColumns = [
   },
   {
     name: "Street Name",
-    selector: (row) =>{
+    selector: (row) => {
       return row.attributes?.street_name
     },
     sortable: true
   },
   {
     name: "Amount",
-    selector: (row) =>{
+    selector: (row) => {
       return row.attributes?.amount
     },
     sortable: true,
   },
   {
     name: "ARREARS",
-    selector: (row) =>{
+    selector: (row) => {
       return row.attributes?.arrears
     },
   },
   {
     name: "PHONE",
-    selector: (row) =>{
+    selector: (row) => {
       return row.attributes?.phone_number
     },
   },

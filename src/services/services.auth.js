@@ -27,6 +27,18 @@ export async function LoginApi(username, password) {
     let { data } = await axios(config);
     return data;
   }
+
+  export async function deleteAxios(url) {
+    const config = {
+      method: "delete",
+      url: `${API_URL}/${url}`,
+      headers: {
+        Authorization: localStorage.getItem("token"),
+      },
+    };
+    let { data } = await axios(config);
+    return data;
+  }
   
   export async function postAxios(url, payload) {
     const config = {

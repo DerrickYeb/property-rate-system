@@ -35,7 +35,7 @@ const DashboardLayout = (props) => {
             <MainDashboardNavbar
               onOpen={onOpen}
               logoText="District Name"
-              appName='Apps'
+              appName='KEDA RMS'
               fixed={fixed}
               {...rest}
 
