@@ -10,26 +10,26 @@ import LandingPage from "~modules/LandingPage/LandingPage";
 
 
 export default function Home() {
-  const { status } = useSession()
-  if (status === "loading") {
-    return <Center>
-      <RiseLoader color='red' />
-    </Center>
-  }
-  if (status === "unauthenticated") {
-    return <Center display={'flex'} justifyContent='center' py={50}>
-      <RiseLoader color='red' />
-    </Center>
-  }
+  // const { status } = useSession()
+  // if (status === "loading") {
+  //   return <Center>
+  //     <RiseLoader color='red' />
+  //   </Center>
+  // }
+  // if (status === "unauthenticated") {
+  //   return <Center display={'flex'} justifyContent='center' py={50}>
+  //     <RiseLoader color='red' />
+  //   </Center>
+  // }
   return (
     <>
       <PageTitle title="Home" />
       {/* <LandingPage /> */}
       {/* <DashboardLayout>  */}
       {/* <ApplicationCards/> */}
-      {/* <RouteGuard> */}
+      <RouteGuard>
       <ApplicationCards />
-      {/* </RouteGuard> */}
+      </RouteGuard>
       {/* </DashboardLayout> */}
     </>
   )

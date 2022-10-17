@@ -8,6 +8,7 @@ import Searchbar from './searchbar';
 import PropTypes from 'prop-types'
 import routes from 'src/routes';
 import { useRouter } from 'next/router';
+import Link from 'next/link';
 
 function NavbarHeaderLinks(props) {
     const { secondary } = props;
@@ -250,6 +251,7 @@ function NavbarHeaderLinks(props) {
               px='14px'>
               <Text fontSize='sm'>Profile Settings</Text>
             </MenuItem>
+            <Link href={'/login'}>
             <MenuItem
               _hover={{ bg: "none" }}
               _focus={{ bg: "none" }}
@@ -261,6 +263,7 @@ function NavbarHeaderLinks(props) {
               }}>
               <Text fontSize='sm'>Log out</Text>
             </MenuItem>
+            </Link>
           </Flex>
         </MenuList>
       </Menu>
